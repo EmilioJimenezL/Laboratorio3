@@ -21,7 +21,19 @@ void countNodes(struct node *head) {
             count++;
             ptr = ptr->link;
         }
-        printf("%d", count);
+        printf("%d\n", count);
+    }
+}
+
+void printData(struct node *head) {
+    if (head == NULL) {
+        printf("La lista esta vacia");
+    } else {
+        struct node *ptr = head;
+        while (ptr != NULL) {
+            printf("%d\n", ptr->data);
+            ptr = ptr->link;
+        }
     }
 }
 
@@ -39,5 +51,6 @@ int main() {
     node1->link = node2;
     head->link->link = node2;
     countNodes(head);
+    printData(head);
     return 0;
 }
