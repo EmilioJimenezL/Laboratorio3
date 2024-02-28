@@ -53,8 +53,7 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2
+				1
 			]
 		}
 	],
@@ -108,13 +107,12 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "problema1.c",
+			"path" : "problema1ListaSimple.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "problema3.c",
+			"path" : "problema1ListaCircularDoblementeEnlazada.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
