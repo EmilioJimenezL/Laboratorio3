@@ -6,5 +6,5 @@ set(CMAKE_C_STANDARD 99)
 add_executable(Lab3
         problema2.c
         problema1ListaSimple.c
-        problema1ListaCircularDoblementeEnlazada.cpp
+        problema1ListaCircularDoblementeEnlazada.c
 )
