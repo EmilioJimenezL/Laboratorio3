@@ -14,14 +14,15 @@ void countNodes(struct node *head) {
     int count = 0;
     if (head == NULL) {
         printf("La lista esta vacia");
-    }else{
-    struct node *ptr = NULL;
-    ptr = head;
-    while (ptr != NULL) {
-        count++;
-        ptr = ptr->link;
+    } else {
+        struct node *ptr = NULL;
+        ptr = head;
+        while (ptr != NULL) {
+            count++;
+            ptr = ptr->link;
+        }
+        printf("%d", count);
     }
-    printf("%d", count);}
 }
 
 int main() {
