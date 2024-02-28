@@ -1,3 +1,7 @@
-//
-// Created by emiiv on 25/02/2024.
-//
+#include "stdio.h"
+int main(){
+    int arrSize;
+    printf("Bienvenido al editor de arrays, ingrese el tamaño de los arrays que desea manejar:\n");
+    scanf("%i", &arrSize);
+
+}
