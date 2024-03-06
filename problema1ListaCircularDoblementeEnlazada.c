@@ -22,7 +22,7 @@
 // src: https://stackoverflow.com/a/1644898
 // function debug_print() must take at least TWO arguments
 // set DEBUG to 1 to print debug_print() to stderr
-#define DEBUG 1
+#define DEBUG 0
 #define debug_print(fmt, ...) \
             do { if (DEBUG) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
 

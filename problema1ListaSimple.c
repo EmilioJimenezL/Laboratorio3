@@ -5,7 +5,6 @@
  * Brandon Yahir Castro Ramos
  * Descripción breve del programa: Lista enlazada simple
  * */
-//todo implementar eliminar intermedio
 #include "stdio.h"
 #include "stdlib.h"
 
