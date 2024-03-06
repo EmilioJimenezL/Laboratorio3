@@ -87,11 +87,30 @@ void delLastNode(struct node *head) {
         head = NULL;
     } else {
         struct node *temp = head;
-        while (temp->link->link != NULL){
+        while (temp->link->link != NULL) {
             temp = temp->link;
         }
         free(temp->link);
         temp->link = NULL;
+    }
+}
+
+void delNodeAtPosition(struct node **head, int position) {
+    struct node *current = *head;
+    struct node *previous = *head;
+    if (position == 0) {
+        *head = current->link;
+        free(current);
+        current = NULL;
+    } else {
+        while (position != 0){
+            previous = current;
+            current = current->link;
+            position--;
+        }
+        previous->link = current->link;
+        free(current);
+        current = NULL;
     }
 }
 
@@ -165,6 +184,10 @@ int main() {
                         delLastNode(head);
                         break;
                     case 3:
+                        printf("La lista tiene %i nodos, puede eliminar un valor en una posicion del 1 al %i, inserte la posicion que desea despejar:\n",
+                               countNodes(head), countNodes(head) - 1);
+                        scanf("%i", &position);
+                        delNodeAtPosition(&head, position);
                         break;
                     default:
                         printf("Eliga un numero valido, regresando al menu...");
