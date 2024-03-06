@@ -1,7 +1,16 @@
 /*Estructuras de datos - LIS 2032-01
  * Nombres Completos: Emilio Ivan Jimenez Lopez 179543
  * Descripción breve del programa: Lista circular doblemente enlazada
- * */
+
+	     * • Insertar un nodo al inicio
+	     * • Insertar un nodo al final
+	     * • Insertar un nodo intermedio
+	     * • Eliminar un nodo al inicio
+	     * • Eliminar un nodo al final
+	     * • Eliminar un nodo intermedio
+	     * • Imprimir los elementos de la lista
+	     *
+*/
 #include "stdio.h"
 #include "stdlib.h"
 
