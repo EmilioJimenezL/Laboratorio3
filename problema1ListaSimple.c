@@ -2,7 +2,7 @@
  * Nombres Completos: Emilio Ivan Jimenez Lopez 179543
  * Descripción breve del programa: Lista enlazada simple
  * */
-//todo implementar insercion al final e intermedio, eliminar al inicio, final e intermedio
+//todo implementar eliminar intermedio
 #include "stdio.h"
 #include "stdlib.h"
 
@@ -10,7 +10,8 @@ struct node {
     int data;
     struct node *link;
 };
-void countNodes(struct node *head) {
+
+int countNodes(struct node *head) {
     int count = 0;
     if (head == NULL) {
         printf("La lista esta vacia");
@@ -21,11 +22,12 @@ void countNodes(struct node *head) {
             count++;
             ptr = ptr->link;
         }
-        printf("%d\n", count);
     }
+    return count;
 }
+
 void printData(struct node *head) {
-    int i = 1;
+    int i = 0;
     if (head == NULL) {
         printf("La lista esta vacia");
     } else {
@@ -37,26 +39,64 @@ void printData(struct node *head) {
         }
     }
 }
-void insertAtEnd(struct node *head, int data){
+
+void insertAtEnd(struct node *head, int data) {
     struct node *ptr, *temp;
     ptr = head;
-    temp = (struct node*)malloc(sizeof(struct node));
+    temp = (struct node *) malloc(sizeof(struct node));
     temp->data = data;
     temp->link = NULL;
-    while (ptr->link != NULL){
-        ptr=ptr->link;
+    while (ptr->link != NULL) {
+        ptr = ptr->link;
     }
     ptr->link = temp;
 }
-struct node* insertAtStart(struct node *head, int data){
+
+struct node *insertAtStart(struct node *head, int data) {
     struct node *ptr = malloc(sizeof(struct node));
     ptr->data = data;
     ptr->link = head;
     head = ptr;
     return head;
 }
+
+void insertAtPosition(struct node *head, int position, int data) {
+    struct node *ptr = head;
+    struct node *ptr2 = malloc(sizeof(struct node));
+    ptr2->data = data;
+    ptr2->link = NULL;
+    position--;
+    while (position != 0) {
+        ptr = ptr->link;
+        position--;
+    }
+    ptr2->link = ptr->link;
+    ptr->link = ptr2;
+}
+
+struct node *delFirstNode(struct node *head) {
+    struct node *temp = head;
+    head = head->link;
+    free(temp);
+    return head;
+}
+
+void delLastNode(struct node *head) {
+    if (head->link == NULL) {
+        free(head);
+        head = NULL;
+    } else {
+        struct node *temp = head;
+        while (temp->link->link != NULL){
+            temp = temp->link;
+        }
+        free(temp->link);
+        temp->link = NULL;
+    }
+}
+
 int main() {
-    int menu, input;
+    int menu, input, position;
     struct node *head = NULL;
     printf("Bienvenido\n");
     do {
@@ -68,13 +108,13 @@ int main() {
         scanf("%i", &menu);
         switch (menu) {
             case 1:
-                if(head == NULL){
+                if (head == NULL) {
                     head = malloc(sizeof(struct node));
                     printf("Ingrese el dato Int que desea almacenar:\n");
                     scanf("%i", &input);
                     head->data = input;
                     head->link = NULL;
-                } else{
+                } else {
                     printf("Donde desea insertar el nodo?\n");
                     printf("1) Al inicio\n");
                     printf("2) Al final\n");
@@ -92,6 +132,15 @@ int main() {
                             insertAtEnd(head, input);
                             break;
                         case 3:
+                            if (countNodes(head) <= 1) {
+                                printf("La lista solo tiene un nodo, inserte otro nodo al inicio o al final para poder insertar en una posicion intermedia\n");
+                            } else {
+                                printf("La lista tiene %i nodos, puede insertar un valor en una posicion del 1 al %i, inserte la posicion y el dato a insertar:\n",
+                                       countNodes(head), countNodes(head) - 1);
+                                scanf("%i", &position);
+                                scanf("%i", &input);
+                                insertAtPosition(head, position, input);
+                            }
                             break;
                         default:
                             printf("Por favor ingrese un valor valido, regresando al menu...\n");
@@ -100,15 +149,32 @@ int main() {
                 }
                 break;
             case 2:
-                if(head == NULL){
+                if (head == NULL) {
                     printf("La lista no existe, inserte un nodo primero\n");
                 }
                 printf("Que nodo desea eliminar?\n");
+                printf("1) El primer nodo\n");
+                printf("2) El ultimo nodo\n");
+                printf("3) Elegir un nodo intermedio\n");
+                scanf("%i", &menu);
+                switch (menu) {
+                    case 1:
+                        head = delFirstNode(head);
+                        break;
+                    case 2:
+                        delLastNode(head);
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        printf("Eliga un numero valido, regresando al menu...");
+                        break;
+                }
                 break;
             case 3:
-                if(head == NULL){
+                if (head == NULL) {
                     printf("La lista no existe, inserte un nodo primero\n");
-                }else{
+                } else {
                     printData(head);
                 }
                 break;
@@ -119,6 +185,6 @@ int main() {
                 printf("Ingrese un numero valido\n");
                 break;
         }
-    } while (menu!=0);
+    } while (menu != 0);
     return 0;
 }
