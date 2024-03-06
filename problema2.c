@@ -171,34 +171,34 @@ int main() {
     raiz = insertarNodo(raiz, 40);
 
     // Imprimir el árbol en In-orden
-    printf("Árbol en In-orden: ");
+    printf("Arbol en In-orden: ");
     imprimirInOrden(raiz);
     printf("\n");
 
     // Buscar un valor/nodo
     int valorBuscado = 30;
     if (buscarNodo(raiz, valorBuscado)) {
-        printf("El valor %d existe en el árbol.\n", valorBuscado);
+        printf("El valor %d existe en el arbol.\n", valorBuscado);
     } else {
-        printf("El valor %d no existe en el árbol.\n", valorBuscado);
+        printf("El valor %d no existe en el arbol.\n", valorBuscado);
     }
 
     // Encontrar el valor más pequeño del árbol
-    printf("Valor más pequeño del árbol: %d\n", encontrarMinimo(raiz));
+    printf("Valor minimo del arbol: %d\n", encontrarMinimo(raiz));
 
     // Encontrar el valor más grande del árbol
-    printf("Valor más grande del árbol: %d\n", encontrarMaximo(raiz));
+    printf("Valor mas grande del arbol: %d\n", encontrarMaximo(raiz));
 
     // Determinar la altura del árbol
-    printf("Altura del árbol: %d\n", calcularAltura(raiz));
+    printf("Altura del arbol: %d\n", calcularAltura(raiz));
 
     // Imprimir el árbol en Pre-orden
-    printf("Árbol en Pre-orden: ");
+    printf("Arbol en Pre-orden: ");
     imprimirPreOrden(raiz);
     printf("\n");
 
     // Imprimir el árbol en Post-orden
-    printf("Árbol en Post-orden: ");
+    printf("Arbol en Post-orden: ");
     imprimirPostOrden(raiz);
     printf("\n");
 
@@ -207,7 +207,7 @@ int main() {
     raiz = eliminarNodo(raiz, valorEliminar);
 
     // Imprimir el árbol después de eliminar un nodo
-    printf("Árbol en In-orden después de eliminar el nodo con valor %d: ", valorEliminar);
+    printf("Arbol en In-orden despues de eliminar el nodo con valor %d: ", valorEliminar);
     imprimirInOrden(raiz);
     printf("\n");
 
