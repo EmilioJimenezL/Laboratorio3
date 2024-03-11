@@ -1,10 +1,3 @@
-/*Estructuras de datos - LIS 2032-01
- * Nombres Completos:
- * Emilio Ivan Jimenez Lopez
- * Hector Canizales Peña
- * Brandon Yahir Castro Ramos
- * Descripción breve del programa: Arbol
- * */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -165,57 +158,79 @@ void eliminarArbol(Nodo* raiz) {
 // Función principal
 int main() {
     Nodo* raiz = NULL;
+    int opcion, valor;
 
-    // Insertar nodos en el árbol
-    raiz = insertarNodo(raiz, 50);
-    raiz = insertarNodo(raiz, 30);
-    raiz = insertarNodo(raiz, 70);
-    raiz = insertarNodo(raiz, 20);
-    raiz = insertarNodo(raiz, 40);
+    do {
+        // Menú interactivo
+        printf("1. Insertar un nodo\n");
+        printf("2. Eliminar un nodo\n");
+        printf("3. Buscar un valor/nodo\n");
+        printf("4. Encontrar el valor más pequeño del arbol\n");
+        printf("5. Encontrar el valor más grande del arbol\n");
+        printf("6. Determinar la altura del arbol\n");
+        printf("7. Imprimir el arbol en Pre-orden\n");
+        printf("8. Imprimir el arbol en In-orden\n");
+        printf("9. Imprimir el arbol en Post-orden\n");
+        printf("10. Eliminar todo el arbol\n");
+        printf("0. Salir\n");
+        printf("Ingrese su opcion: ");
+        scanf("%d", &opcion);
 
-    // Imprimir el árbol en In-orden
-    printf("Arbol en In-orden: ");
-    imprimirInOrden(raiz);
-    printf("\n");
-
-    // Buscar un valor/nodo
-    int valorBuscado = 30;
-    if (buscarNodo(raiz, valorBuscado)) {
-        printf("El valor %d existe en el arbol.\n", valorBuscado);
-    } else {
-        printf("El valor %d no existe en el arbol.\n", valorBuscado);
-    }
-
-    // Encontrar el valor más pequeño del árbol
-    printf("Valor minimo del arbol: %d\n", encontrarMinimo(raiz));
-
-    // Encontrar el valor más grande del árbol
-    printf("Valor mas grande del arbol: %d\n", encontrarMaximo(raiz));
-
-    // Determinar la altura del árbol
-    printf("Altura del arbol: %d\n", calcularAltura(raiz));
-
-    // Imprimir el árbol en Pre-orden
-    printf("Arbol en Pre-orden: ");
-    imprimirPreOrden(raiz);
-    printf("\n");
-
-    // Imprimir el árbol en Post-orden
-    printf("Arbol en Post-orden: ");
-    imprimirPostOrden(raiz);
-    printf("\n");
-
-    // Eliminar un nodo
-    int valorEliminar = 30;
-    raiz = eliminarNodo(raiz, valorEliminar);
-
-    // Imprimir el árbol después de eliminar un nodo
-    printf("Arbol en In-orden despues de eliminar el nodo con valor %d: ", valorEliminar);
-    imprimirInOrden(raiz);
-    printf("\n");
-
-    // Eliminar todo el árbol
-    eliminarArbol(raiz);
+        switch (opcion) {
+            case 1:
+                printf("Ingrese el valor a insertar: ");
+                scanf("%d", &valor);
+                raiz = insertarNodo(raiz, valor);
+                break;
+            case 2:
+                printf("Ingrese el valor a eliminar: ");
+                scanf("%d", &valor);
+                raiz = eliminarNodo(raiz, valor);
+                break;
+            case 3:
+                printf("Ingrese el valor a buscar: ");
+                scanf("%d", &valor);
+                if (buscarNodo(raiz, valor)) {
+                    printf("El valor %d existe en el arbol.\n", valor);
+                } else {
+                    printf("El valor %d no existe en el arbol.\n", valor);
+                }
+                break;
+            case 4:
+                printf("Valor minimo del arbol: %d\n", encontrarMinimo(raiz));
+                break;
+            case 5:
+                printf("Valor mas grande del arbol: %d\n", encontrarMaximo(raiz));
+                break;
+            case 6:
+                printf("Altura del arbol: %d\n", calcularAltura(raiz));
+                break;
+            case 7:
+                printf("Arbol en Pre-orden: ");
+                imprimirPreOrden(raiz);
+                printf("\n");
+                break;
+            case 8:
+                printf("Arbol en In-orden: ");
+                imprimirInOrden(raiz);
+                printf("\n");
+                break;
+            case 9:
+                printf("Arbol en Post-orden: ");
+                imprimirPostOrden(raiz);
+                printf("\n");
+                break;
+            case 10:
+                eliminarArbol(raiz);
+                printf("El arbol ha sido eliminado.\n");
+                break;
+            case 0:
+                // Salir del programa
+                break;
+            default:
+                printf("Opcion no valida. Por favor, ingrese una opcion valida.\n");
+        }
+    } while (opcion != 0);
 
     return 0;
 }
